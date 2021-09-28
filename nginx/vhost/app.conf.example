@@ -1,0 +1,38 @@
+server {
+
+    listen 80;
+
+    # For https
+    # listen 443 ssl;
+    # ssl_certificate /etc/nginx/ssl/default.crt;
+    # ssl_certificate_key /etc/nginx/ssl/default.key;
+
+    server_name app.test;
+    root /var/www/app;
+    error_log /var/log/nginx/app_error.log;
+    access_log /var/log/nginx/app_access.log;
+
+    index index.php index.html index.htm;
+
+    location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php($|/) {
+        fastcgi_pass php-upstream;
+        fastcgi_index index.php;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        fastcgi_read_timeout 600;
+        fastcgi_split_path_info ^(.+\.php)(/?.+)$;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht { deny all; }
+    location ~ /\.git { deny all; }
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|json|swg)?$ { expires 30d; }
+    location ~ .*\.(js|css)?$ { expires 12h; }
+
+}

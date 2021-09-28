@@ -1,0 +1,97 @@
+###########################################################
+###################### General Setup ######################
+###########################################################
+
+### Paths #################################################
+# Point to the path of your applications code on your host
+APP_CODE_PATH_HOST=./www
+# Point to where the `APP_CODE_PATH_HOST` should be in the container
+APP_CODE_PATH_CONTAINER=/var/www
+# You may add flags to the path `:cached`, `:delegated`. When using Docker Sync add `:nocopy`
+APP_CODE_CONTAINER_FLAG=:cached
+# Choose storage path on your machine. For all storage systems
+DATA_PATH_HOST=~/.phpdock/data
+
+### Environment ###########################################
+# If you need to change the sources (i.e. to China), set CHANGE_SOURCE to true
+CHANGE_SOURCE=true
+# Set CHANGE_SOURCE and UBUNTU_SOURCE option if you want to change the Ubuntu system sources.list file.
+UBUNTU_SOURCE=aliyun
+# Set timezone
+TIMEZONE=Asia/Shanghai
+
+### Docker Sync ###########################################
+# If you are using Docker Sync. For `osx` use 'native_osx', for `windows` use 'unison', for `linux` docker-sync is not required
+DOCKER_SYNC_STRATEGY=native_osx
+
+### Drivers ################################################
+# All volumes driver
+VOLUMES_DRIVER=local
+# All Networks driver
+NETWORKS_DRIVER=bridge
+
+### Docker compose files ##################################
+# Select which docker-compose files to include. If using docker-sync append `:docker-compose.sync.yml` at the end
+COMPOSE_FILE=docker-compose.yml
+# Change the separator from : to ; on Windows
+COMPOSE_PATH_SEPARATOR=:
+# Define the prefix of container names. This is useful if you have multiple projects that use laradock to have separate containers per project.
+COMPOSE_PROJECT_NAME=phpdock
+
+### PHP Version ###########################################
+# Select a PHP version of the Workspace and PHP-FPM containers. Accepted values: 7.4 - 7.2 - 5.6
+PHP_VERSION=7.4
+
+### PHP Interpreter #######################################
+# Select the PHP Interpreter. Accepted values: php-fpm
+PHP_INTERPRETER=php-fpm
+
+### NGINX #################################################
+NGINX_HOST_HTTP_PORT=80
+NGINX_HOST_HTTPS_PORT=443
+NGINX_PHP_UPSTREAM_CONTAINER=php-fpm
+NGINX_PHP_UPSTREAM_PORT=9000
+NGINX_SSL_PATH=./nginx/ssl/
+NGINX_VHOST_PATH=./nginx/vhost/
+NGINX_HOST_LOG_PATH=./logs/nginx/
+
+### MEMCACHED #############################################
+MEMCACHED_HOST_PORT=11211
+
+### REDIS #################################################
+REDIS_HOST_PORT=6379
+
+### REDISWEBUI #########################################
+REDIS_WEBUI_USERNAME=admin
+REDIS_WEBUI_PASSWORD=password
+REDIS_WEBUI_CONNECT_HOST=redis
+REDIS_WEBUI_CONNECT_PORT=6379
+REDIS_WEBUI_PORT=6380
+
+### PORTAINER #########################################
+PORTAINER_WEB_PORT=9900
+
+### MYSQL #################################################
+# Select a Mysql version of the Workspace containers. Accepted values: latest - 8 - 8.0 - 5.7 - 5.6
+MYSQL_VERSION=8.0
+MYSQL_HOST_PORT=3306
+MYSQL_ROOT_PASSWORD=root
+MYSQL_USER=phpdock
+MYSQL_PASSWORD=phpdock
+MYSQL_DATABASE=default
+
+### MONGODB ###############################################
+MONGODB_HOST_PORT=27017
+
+### ELK ##################################################
+ELK_VERSION=7.9.0
+### ELASTICSEARCH #########################################
+ELASTICSEARCH_HOST_HTTP_PORT=9200
+ELASTICSEARCH_HOST_TRANSPORT_PORT=9300
+
+### NODE #########################################
+NODE_VERSION=14
+NODE_HOST_PORT=3000
+
+### JAVA #########################################
+JAVA_VERSION=8

@@ -1,0 +1,9 @@
+2020/08/28 16:57:21 [emerg] 8#8: open() "/var/log/nginx/api/lr_access.log" failed (2: No such file or directory)
+2020/08/31 14:46:56 [warn] 8#8: server name "/var/www/service_api/uhomes" has suspicious symbols in /etc/nginx/vhost/serviceapi_2.0.conf:6
+2021/06/08 09:57:25 [emerg] 10#10: host not found in upstream "php-fpm72:9002" in /etc/nginx/conf.d/upstream.conf:2
+2021/06/08 11:25:22 [emerg] 11#11: host not found in upstream "php-fpm72:9002" in /etc/nginx/conf.d/upstream.conf:2
+2021/08/09 19:16:59 [emerg] 9#9: host not found in upstream "php-fpm:9000" in /etc/nginx/conf.d/upstream.conf:1
+2021/08/09 19:40:59 [emerg] 10#10: host not found in upstream "php-fpm:9000" in /etc/nginx/conf.d/upstream.conf:1
+2021/08/09 19:41:03 [emerg] 11#11: host not found in upstream "php-fpm:9000" in /etc/nginx/conf.d/upstream.conf:1
+2021/08/13 09:58:07 [emerg] 9#9: host not found in upstream "php-fpm72:9002" in /etc/nginx/conf.d/upstream.conf:2
+2021/08/13 11:58:18 [emerg] 10#10: host not found in upstream "php-fpm72:9002" in /etc/nginx/conf.d/upstream.conf:2

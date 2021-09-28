@@ -1,0 +1,126 @@
+#!/bin/bash
+set -eu
+
+# This shell script is an optional tool to simplify
+# the installation and usage of phpdock with docker-sync.
+
+# To run, make sure to add permissions to this file:
+# chmod 755 dock
+
+# USAGE EXAMPLE:
+# Install docker-compose and docker-sync: ./dock install
+# Start sync and services with nginx and phpfpm: ./dock up nginx php-fpm
+# Stop containers and sync: ./dock stop
+
+# prints colored text
+print_style() {
+  if [ "$2" == "info" ]; then
+    COLOR="96m"
+  elif [ "$2" == "success" ]; then
+    COLOR="92m"
+  elif [ "$2" == "warning" ]; then
+    COLOR="93m"
+  elif [ "$2" == "danger" ]; then
+    COLOR="91m"
+  else #default color
+    COLOR="0m"
+  fi
+  STARTCOLOR="\e[$COLOR"
+  ENDCOLOR="\e[0m"
+  printf "$STARTCOLOR%b$ENDCOLOR" "$1"
+}
+
+display_options() {
+  printf "Available options:\n"
+  print_style "   web" "success"
+  printf "\t Starts docker-sync and runs docker compose for web services.\n"
+
+  print_style "   up [services]" "success"
+  printf "\t Starts docker-sync and runs docker compose.\n"
+
+  print_style "   stop" "success"
+  printf "\t\t\t Stops containers and docker-sync.\n"
+
+  print_style "   build [services]" "info"
+  printf "\t Build docker compose.\n"
+
+  print_style "   down" "success"
+  printf "\t\t\t Stop and remove containers, networks, images, and volumes and docker-sync.\n"
+
+  print_style "   cli" "success"
+  printf "\t\t\t Opens bash on the php-cli with user.\n"
+
+  print_style "   cli72" "success"
+  printf "\t\t Opens bash on the php-cli72 with user.\n"
+
+  print_style "   install" "info"
+  printf "\t\t Installs docker-sync and docker-compose gem on the host machine.\n"
+
+  print_style "   sync" "info"
+  printf "\t\t\t Manually triggers the synchronization of files.\n"
+
+  print_style "   clean" "danger"
+  printf "\t\t Removes all files from docker-sync.\n"
+}
+
+if [[ $# -eq 0 ]]; then
+  #print_style "Missing arguments.\n" "danger"
+  display_options
+  exit 1
+fi
+
+if [ "$1" == "up" ]; then
+  #print_style "Initializing Docker Sync\n" "info"
+  #print_style "May take a long time (15min+) on the first run\n" "info"
+  #docker-sync start
+
+  print_style "Initializing Docker Compose\n" "info"
+  shift # removing first argument
+  docker-compose up -d ${@}
+
+elif [ "$1" == "build" ]; then
+  print_style "Build Docker Compose\n" "info"
+  shift # removing first argument
+  docker-compose build ${@}
+
+elif [ "$1" == "stop" ]; then
+  print_style "Stopping Docker Compose\n" "info"
+  docker-compose stop
+  #print_style "Stopping Docker Sync\n" "info"
+  #docker-sync stop
+
+elif [ "$1" == "down" ]; then
+  print_style "Stop and remove containers, networks, images, volumes\n" "info"
+  docker-compose down
+  #print_style "Stopping Docker Sync\n" "info"
+  #docker-sync stop
+
+elif [ "$1" == "web" ]; then
+  print_style "Initializing Docker Compose for services [ nginx, php-fpm ]\n" "info"
+  ./dock up nginx
+
+elif [ "$1" == "cli" ]; then
+  docker-compose exec php-cli bash
+
+elif [ "$1" == "cli72" ]; then
+  docker-compose exec php-cli72 bash
+
+elif [ "$1" == "install" ]; then
+  print_style "Installing docker-compose\n" "info"
+  sudo gem install docker-compose
+
+  print_style "Installing docker-sync\n" "info"
+  sudo gem install docker-sync
+
+elif [ "$1" == "sync" ]; then
+  print_style "Manually triggering sync between host and docker-sync container.\n" "info"
+  docker-sync sync
+
+elif [ "$1" == "clean" ]; then
+  print_style "Removing and cleaning up files from the docker-sync container.\n" "warning"
+  docker-sync clean
+else
+  print_style "Invalid arguments.\n" "danger"
+  display_options
+  exit 1
+fi
