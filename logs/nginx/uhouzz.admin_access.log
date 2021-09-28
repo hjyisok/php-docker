@@ -1,5 +1,0 @@
-172.18.0.1 - - [21/Apr/2021:10:29:09 +0800] "GET /index.php HTTP/1.1" 404 47 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
-172.18.0.1 - - [21/Apr/2021:10:29:09 +0800] "GET /favicon.ico HTTP/1.1" 404 47 "http://uhouzz.admin.com/index.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
-172.18.0.1 - - [21/Apr/2021:10:29:10 +0800] "GET /index.php HTTP/1.1" 404 47 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
-172.18.0.1 - - [21/Apr/2021:10:29:13 +0800] "GET / HTTP/1.1" 404 47 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
-172.18.0.1 - - [21/Apr/2021:10:32:47 +0800] "GET / HTTP/1.1" 200 36 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"

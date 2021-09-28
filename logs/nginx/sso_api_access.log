@@ -1,3 +1,0 @@
-172.18.0.1 - - [02/Sep/2020:14:41:54 +0800] "GET / HTTP/1.1" 403 59 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
-172.18.0.1 - - [02/Sep/2020:14:41:55 +0800] "GET /favicon.ico HTTP/1.1" 200 657 "http://sso.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
-172.18.0.1 - - [02/Sep/2020:14:42:17 +0800] "GET //api/Session/menus HTTP/1.1" 403 59 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
